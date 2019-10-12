@@ -15,10 +15,8 @@ namespace Softcore.Patches
         {
             MonoBehaviour.print("Retry() (Patched)");
             GameScript.poison = 0;
-            for (int i = 0; i < 38; i++)
-            {
-                ___combatChips[i] = 0;
-            }
+            GameScript.frost = 0;
+            GameScript.burn = 0;
             __instance.SaveGame(0);
             GameScript.dead = false;
             GameScript.curPlanet = 0;
@@ -59,6 +57,7 @@ namespace Softcore.Patches
             __instance.StartCoroutine((IEnumerator) typeof(GameScript).GetMethod("ReplenishEnergy", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(__instance, new object[] { }));
             ___droidCount = (int) typeof(GameScript).GetMethod("GetActiveDroidCount", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(__instance, new object[] { });
             GameScript.hp = 1;
+            PreviewLabs.PlayerPrefs.SetInt(Menuu.curChar + "hp", GameScript.hp);
             GameScript.energy = GameScript.maxenergy;
             GameScript.portalLevel = PreviewLabs.PlayerPrefs.GetInt("portalLevel" + Menuu.curChar);
             if (Menuu.curName == string.Empty)

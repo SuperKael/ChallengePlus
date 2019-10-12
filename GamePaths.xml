@@ -3,7 +3,7 @@
   <PropertyGroup>
     <!-- Set this full path to your game folder. Must contain a slash at the end. -->
 	<!-- Example: D:\Games\GameName\ -->
-    <GamePath>C:\Program Files (x86)\Steam\steamapps\common\Roguelands\</GamePath>
+    <GamePath>D:\Program Files (x86)\Steam\steamapps\common\Roguelands\</GamePath>
 
     <!-- Set this partial path to the game's Managed folder. Must contain a slash at the end. -->
 	<!-- Example: GameName_Data\Managed\ -->
