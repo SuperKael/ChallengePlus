@@ -1,0 +1,4 @@
+Softcore prevents your character from being deleted when you die.
+If you select "Retry" on the death screen, you will wake up on the ship without losing anything.
+If you select "Main Menu" on the death screen, you will be returned to the main menu as usual, but your save file will still be available.
+Either way, you will respawn with only one health point.
