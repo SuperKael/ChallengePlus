@@ -1,0 +1,43 @@
+using UnityEngine;
+using HarmonyLib;
+using System.Collections.Generic;
+using System.Reflection.Emit;
+using System.Linq;
+using System.Reflection;
+using GadgetCore.API;
+using System;
+using GadgetCore.Util;
+
+namespace ChallengePlus.Patches
+{
+    [HarmonyPatch]
+    [HarmonyGadget("Challenge+", "URP")]
+    public static class PatchURP_Millipede_DropLocal_Postfix
+    {
+        public static readonly MethodInfo ApplyBonusRareDropChance = typeof(PatchHelper).GetMethod("ApplyBonusRareDropChance", BindingFlags.Public | BindingFlags.Static);
+
+        [HarmonyTargetMethod]
+        public static MethodBase TargetMethod()
+        {
+            return Gadgets.GetGadget("URP").Info.Mod.Assembly.GetType("URP.Patches.Patch_Millipede_DropLocal").GetMethod("Postfix", BindingFlags.Public | BindingFlags.Static);
+        }
+
+        [HarmonyTranspiler]
+        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator gen)
+        {
+            var p = TranspilerHelper.CreateProcessor(instructions, gen);
+            var refs = p.FindAllRefsByInsns(new List<CodeInstruction>(new CodeInstruction[] {
+                new CodeInstruction(OpCodes.Ldc_I4_0),
+                new CodeInstruction(OpCodes.Ldc_I4_S),
+                new CodeInstruction(OpCodes.Call),
+                new CodeInstruction(OpCodes.Brtrue)
+            }));
+            foreach (var ilRef in refs)
+            {
+                if ((sbyte)p.GetInsn(ilRef.GetRefByOffset(1)).operand == 75) continue;
+                p.InjectHook(ilRef.GetRefByOffset(2), ApplyBonusRareDropChance);
+            }
+            return p.Insns;
+        }
+    }
+}

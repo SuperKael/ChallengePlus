@@ -1,8 +1,0 @@
-C:\Users\kaelh\Documents\Modding\Roguelands\Softcore\Release\ModInfo.txt
-C:\Users\kaelh\Documents\Modding\Roguelands\Softcore\Release\Softcore.dll
-C:\Users\kaelh\Documents\Modding\Roguelands\Softcore\Softcore\obj\Release\Softcore.dll
-C:\Users\kaelh\Documents\Modding\Roguelands\Softcore\Softcore\obj\Release\Softcore.csproj.CopyComplete
-C:\Users\kaelh\Documents\Modding\Roguelands\Release\ModInfo.txt
-C:\Users\kaelh\Documents\Modding\Roguelands\Release\Softcore.dll
-C:\Users\kaelh\Documents\Modding\Roguelands\Softcore\obj\Release\Softcore.csprojAssemblyReference.cache
-C:\Users\kaelh\Documents\Modding\Roguelands\Softcore\obj\Release\Softcore.dll
